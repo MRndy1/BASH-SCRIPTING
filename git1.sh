@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo "part1 branch1 the first branch"
+echo "this is changed by git3"
+echo "this is a git3 who change this file"
