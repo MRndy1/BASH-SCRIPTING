@@ -1,1 +1,157 @@
-https://tafensw-my.sharepoint.com/:w:/r/personal/andy_kurniawan1_studytafensw_edu_au/Documents/Document%201.docx?d=w9df03d6b38a34ef6898d95797986535b&csf=1&web=1&e=oRwUPY
+Here's your exact screenshot checklist + all commands: 
+
+ 
+
+🖥️ TASK 1 – Netcat (9 screenshots) 
+
+Open 2 terminals in Kali. Jane = Terminal 1, Bob = Terminal 2. 
+
+Screenshot 1 — Jane sets up listener: 
+
+nc -lvp 4444 
+  
+
+(take screenshot of Jane's terminal showing "listening on 4444") 
+
+Screenshot 2 — Bob connects to Jane: 
+
+nc 127.0.0.1 4444 
+  
+
+(take screenshot showing connection established on BOTH terminals) 
+
+Screenshot 3 — Jane sets up listener again: 
+
+nc -lvp 4444 
+  
+
+Screenshot 4 — Bob creates hw.txt and pipes it: 
+
+echo "Hello World" > hw.txt 
+cat hw.txt | nc 127.0.0.1 4444 
+  
+
+(screenshot Jane's terminal receiving "Hello World") 
+
+Screenshot 5 — Jane sets up eavesdropping listener: 
+
+nc -lvp 4444 > eavesdropping.txt 
+  
+
+Screenshot 6 — Bob sends the secret message: 
+
+echo "Dr. Jeff is coming for Bill" | nc 127.0.0.1 4444 
+  
+
+Screenshot 7 — Jane proves it worked: 
+
+cat eavesdropping.txt 
+  
+
+(screenshot showing "Dr. Jeff is coming for Bill" in the file) 
+
+Screenshot 8 — Jane sets up bash shell listener: 
+
+nc -lvp 4444 -e /bin/bash 
+  
+
+Screenshot 9 — Bob connects and prints info: 
+
+nc 127.0.0.1 4444 
+id 
+pwd 
+ifconfig 
+  
+
+(one screenshot showing all 3 commands and their output) 
+
+ 
+
+🖥️ TASK 2 – Nmap (1 screenshot) 
+
+Screenshot 1 — Scan nsihackers.xyz: 
+
+nmap -sV -p- --open nsihackers.xyz 
+  
+
+(screenshot showing at least 5 open ports with service names) 
+
+ 
+
+🖥️ TASK 3 – Passive Recon on Telstra (4 screenshots) 
+
+Screenshot 1 — Email enumeration: 
+
+theHarvester -d telstra.com -b google 
+  
+
+Screenshot 2 — Whois fingerprinting: 
+
+whois telstra.com 
+  
+
+(scroll to show registrar, name servers, dates) 
+
+Screenshot 3 — Have I Been Pwned: Go to https://haveibeenpwned.com → type any email found from theHarvester → screenshot the result (breached or not, both are fine) 
+
+Screenshot 4 — GhostProject: Go to https://ghostproject.fr → search an email from theHarvester → screenshot the result 
+
+ 
+
+🖥️ TASK 4 – Active Recon on Telstra (4 screenshots) 
+
+Screenshot 1 — Enumerate IP address: 
+
+nslookup telstra.com 
+  
+
+Screenshot 2 — Zone transfer attempt (will be denied, that's OK — just show you tried): 
+
+dig axfr telstra.com @ns1.telstra.com 
+  
+
+Screenshot 3 — Forward DNS Lookup: 
+
+dig telstra.com 
+  
+
+Screenshot 4 — Reverse DNS Lookup (replace IP with what nslookup gave you): 
+
+dig -x 139.130.4.5 
+  
+
+ 
+
+📊 Summary — Total Screenshots Needed 
+
+Task 
+
+Screenshots 
+
+Task 1 – Netcat 
+
+9 
+
+Task 2 – Nmap 
+
+1 
+
+Task 3 – Passive Recon 
+
+4 
+
+Task 4 – Active Recon 
+
+4 
+
+Task 5 – Bruce Miles 
+
+~8 (one per piece of info found) 
+
+Total 
+
+~26 
+
+Go in order — start your VM now and knock out Task 1 first since it takes the most steps! Let me know if any command doesn't work and I'll troubleshoot it for you. 
+
+ 
